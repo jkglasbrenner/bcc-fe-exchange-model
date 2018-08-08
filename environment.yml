@@ -13,8 +13,11 @@ dependencies:
   - jedi=0.12.1
   - jinja2=2.10
   - jupyter=1.0.0
+  - jupyterlab=0.33.4
+  - markdown=2.6.11
   - markupsafe=1.0
   - matplotlib=2.2.2
+  - nbconvert=5.3.1
   - networkx=2.1
   - numpy=1.15.0
   - numpy-base=1.15.0
@@ -39,6 +42,7 @@ dependencies:
       - monty==1.0.3
       - nbdime==1.0.1
       - neighbormodels==0.1.0
+      - pelican==3.7.1
       - pycodestyle==2.3.1
       - pydocstyle==2.1.1
       - PyHamcrest==1.9.0
@@ -46,5 +50,6 @@ dependencies:
       - pytest==3.7.0
       - ruamel.yaml==0.15.50
       - rope==0.10.7
+      - typogrify==2.0.7
       - yamllint==1.11.1
       - yapf==0.22.0
