@@ -1,0 +1,22 @@
+h1 {
+  margin-bottom: 0.2rem!important;
+  border-bottom: 0;
+}
+
+.article-datecreated, .article-byline {
+  margin-bottom: 0.2rem;
+  font-family: Quantico;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.125rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .article-datecreated, .article-byline {
+    font-size: 1.25rem;
+  }
+}
+
+.article-datecreated {
+    display: block;
+}

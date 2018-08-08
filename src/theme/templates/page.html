@@ -1,0 +1,11 @@
+{# -*- engine: django -*- #}
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block content %}
+  <article class="static-page">
+    {% include 'includes/page/header.html' %}
+    {% include 'includes/page/body.html' %}
+  </article>
+{% endblock content %}

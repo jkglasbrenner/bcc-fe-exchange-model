@@ -1,0 +1,6 @@
+{# -*- engine: django -*- #}
+<footer class="article-footer">
+  {% if article.modified %}
+    <time class="article-datemodified" datetime="{{ article.modified.isoformat() }}">{{ article.modified|strftime('Updated: %b %d, %Y at %I:%M %p')}}</time>
+  {% endif %}
+</footer>

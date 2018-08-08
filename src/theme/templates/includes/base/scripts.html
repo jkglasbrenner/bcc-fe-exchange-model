@@ -1,0 +1,14 @@
+{# -*- engine: django -*- #}
+<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/site.min.js"></script>
+{% block scripts %}
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/highlightjs/highlight.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/katex/katex.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/katex/contrib/auto-render.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/fontawesome/fontawesome-all.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/vendor/vendorInit.js"></script>
+{% endblock %}
+{% if GITHUB_URL %}
+  <style>
+   .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+  </style>
+{% endif %}

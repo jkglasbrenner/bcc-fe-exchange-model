@@ -1,0 +1,6 @@
+{# -*- engine: django -*- #}
+<footer class="static-page-footer">
+  {% if page.modified %}
+    <time class="static-page-datemodified" datetime="{{ page.modified.isoformat() }}">{{ page.modified|strftime('Updated: %b %d, %Y at %I:%M %p')}}</time>
+  {% endif %}
+</footer>

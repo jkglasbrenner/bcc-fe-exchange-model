@@ -1,0 +1,16 @@
+{# -*- engine: django -*- #}
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  {% if article.description %}
+    <meta name="description" content="{{ article.description }}">
+  {% endif %}
+{% endblock head %}
+
+{% block content %}
+  <article class="static-page">
+    {% include 'includes/article/header.html' %}
+    {% include 'includes/article/body.html' %}
+  </article>
+{% endblock %}
