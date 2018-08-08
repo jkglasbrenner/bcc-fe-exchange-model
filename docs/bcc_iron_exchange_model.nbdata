@@ -1,0 +1,9 @@
+Title: BCC Fe Exchange Model
+Author: James K. Glasbrenner
+Date: 2018-08-08 10:00
+Summary: A tutorial on how to obtain magnetic exchange parameters for BCC Fe using first-principles density functional theory calculations.
+Slug: bcc-fe-exchange-model
+Category: notebooks
+Save_as: index.html
+Subcells: [1, None]
+
