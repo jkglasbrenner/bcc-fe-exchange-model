@@ -19,6 +19,7 @@ dependencies:
   - matplotlib=2.2.2
   - nbconvert=5.3.1
   - networkx=2.1
+  - nodejs=8.11.3
   - numpy=1.15.0
   - numpy-base=1.15.0
   - pandas=0.23.3
