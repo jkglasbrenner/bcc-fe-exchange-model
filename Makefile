@@ -131,7 +131,7 @@ stopserver		:
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
 publish			:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) -n $(PELICANOPTS)
 	cp $(BASEDIR)/.gitignore $(OUTPUTDIR)
 
 ssh_upload		:	publish
@@ -155,9 +155,6 @@ cf_upload		:	publish
 github			:	publish
 	ghp-import -m "Updating notebook page" -b $(GITHUB_PAGES_BRANCH) -n $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
-
-github_travis	:	publish
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 env				:
 	@echo "Setting up environment"

@@ -25,7 +25,7 @@ install:
 - conda env update -q -f environment.yml
 - conda activate $REPO_CONDA_ENV
 script:
-- make github_travis
+- make publish
 deploy:
   name: "James K. Glasbrenner (Travis-CI)"
   email: jglasbr2@gmu.edu
