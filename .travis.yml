@@ -1,27 +1,29 @@
 language: python
 python:
-  - "3.6"
+- "3.6"
+notifications:
+  email:
+    on_failure: never
+    on_success: never
 install:
-  - sudo apt-get update
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-    else
-      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - source $HOME/miniconda/etc/profile.d/conda.sh
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
-  - conda info -a
-  - conda env create -q -f environment.yml
-  - conda activate $(grep "name: " environment.yml | sed "s/name:\s*\(.*\?\)$/\1/")
-
+- sudo apt-get update
+- if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+    wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+  else
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  fi
+- bash miniconda.sh -b -p $HOME/miniconda
+- source $HOME/miniconda/etc/profile.d/conda.sh
+- hash -r
+- conda config --set always_yes yes --set changeps1 no
+- conda update -q conda
+- conda info -a
+- conda env create -q -f environment.yml
+- conda activate $LOCAL_CONDA_ENV
 script:
-  - make github_travis
-
+- make github_travis
 deploy:
-  name: James K. Glasbrenner (Travis-CI)
+  name: "James K. Glasbrenner (Travis-CI)"
   email: jglasbr2@gmu.edu
   github-token: $GITHUB_PAT
   keep-history: true
@@ -30,3 +32,6 @@ deploy:
   skip-cleanup: true
   on:
     branch: master
+env:
+  global:
+  - LOCAL_CONDA_ENV=bcc-fe-exchange-model
