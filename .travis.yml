@@ -18,7 +18,7 @@ install:
 - conda config --set always_yes yes --set changeps1 no
 - conda update -q conda
 - conda info -a
-- conda env update -q -f environment.yml
+- conda env create -q -f environment.yml
 - conda activate $REPO_CONDA_ENV
 script:
 - make publish
@@ -34,6 +34,4 @@ deploy:
     branch: master
 env:
   global:
-  - CONDA_ENVS_PATH=$HOME/.conda/envs
-  - CONDA_PKGS_PATH=$HOME/.conda/pkgs
   - REPO_CONDA_ENV=bcc-fe-exchange-model
