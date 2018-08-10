@@ -131,7 +131,7 @@ stopserver		:
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
 publish			:
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) -n $(PELICANOPTS)
+	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 	cp $(BASEDIR)/.gitignore $(OUTPUTDIR)
 
 ssh_upload		:	publish
