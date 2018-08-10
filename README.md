@@ -2,11 +2,11 @@ BCC Fe exchange model
 =====================
 
 <p align="center">
-  <a href="https://jkglasbrenner.github.io/bcc-fe-exchange-model/" alt="Github pages status">
-    <img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=gh-pages">
-  </a>
   <a href="https://travis-ci.org/jkglasbrenner/bcc-fe-exchange-model" alt="Travis CI status">
     <img src="https://travis-ci.org/jkglasbrenner/bcc-fe-exchange-model.svg?branch=master">
+  </a>
+  <a href="https://jkglasbrenner.github.io/bcc-fe-exchange-model/" alt="Github pages status">
+    <img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=gh-pages">
   </a>
 </p>
 
