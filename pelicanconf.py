@@ -43,6 +43,7 @@ PATH = "docs"
 IMAGES_PATH = "img"
 STATIC_PATHS = [
     IMAGES_PATH,
+    "data",
 ]
 PAGE_PATHS = ["page"]
 PAGE_URL = "{slug}/"
