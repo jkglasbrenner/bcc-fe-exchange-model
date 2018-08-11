@@ -1033,6 +1033,278 @@ div.input_area pre, div.output_area pre {
   margin-bottom: 0!important;
 }
 </style>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modules">Modules<a class="anchor-link" href="#Modules">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We load the required classes and functions from the pymatgen library for easy manipulation of crystal&nbsp;structures.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pymatgen.transformations.standard_transformations</span> <span class="k">import</span> <span class="n">SupercellTransformation</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We also import convenient functions from the <a href="https://github.com/jkglasbrenner/datamaterials-neighbormodels">neighbormodels</a> module that were developed for counting neighbors in a periodic crystal&nbsp;system.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">neighbormodels.structure</span> <span class="k">import</span> <span class="n">from_file</span>
+<span class="kn">from</span> <span class="nn">neighbormodels.neighbors</span> <span class="k">import</span> <span class="n">count_neighbors</span>
+<span class="kn">from</span> <span class="nn">neighbormodels.interactions</span> <span class="k">import</span> <span class="n">build_model</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Crystal-structure">Crystal structure<a class="anchor-link" href="#Crystal-structure">&#182;</a></h2><p>At room temperature, <a href="#kohlhaas1967_ZAngewPhys">iron has the following crystal structure</a>:</p>
+<table>
+  <tr><td>Structure</td><td>Body-centered cubic</td></tr>
+  <tr><td>Spacegroup</td><td>Im-3m (229)</td></tr>
+  <tr><td>Lattice constants</td><td>a = 2.8665 Å</td></tr>
+  <tr>
+    <td>Basis</td>
+    <td>Fe: [0.00 0.00 0.00]</td>
+  </tr>
+</table><p>A <span class="caps">CIF</span> file with these parmaeters that generates a conventional two-atom unit cell for <span class="caps">BCC</span> Fe is <a href="data/fe.cif">available here</a>.
+We use this file to generate a <a href="http://pymatgen.org/">pymatgen</a> <code>Structure</code> object that will be convenient for building our magnetic exchange&nbsp;model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fe_cif_filepath</span> <span class="o">=</span> <span class="s2">&quot;data/fe.cif&quot;</span>
+<span class="n">fe_structure_2atom</span> <span class="o">=</span> <span class="n">from_file</span><span class="p">(</span><span class="n">structure_file</span><span class="o">=</span><span class="n">fe_cif_filepath</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A quick printout of <code>fe_structure</code> confirms that we have the correct&nbsp;structure:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fe_structure_2atom</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Full Formula (Fe2)
+Reduced Formula: Fe
+abc   :   2.866500   2.866500   2.866500
+angles:  90.000000  90.000000  90.000000
+Sites (2)
+  #  SP      a    b    c
+---  ----  ---  ---  ---
+  0  Fe    0    0    0
+  1  Fe    0.5  0.5  0.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To represent the f-type, a-type, and g-type magnetic patterns, we will need a four-atom cell instead of a two-atom cell.
+We transform the supercell as&nbsp;follows:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rotate_cell_45_degrees</span> <span class="o">=</span> <span class="n">SupercellTransformation</span><span class="p">(</span>
+    <span class="n">scaling_matrix</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
+<span class="p">)</span>
+<span class="n">fe_structure_4atom</span> <span class="o">=</span> <span class="n">rotate_cell_45_degrees</span><span class="o">.</span><span class="n">apply_transformation</span><span class="p">(</span><span class="n">fe_structure_2atom</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As expected, this results in the required 4-atom unit&nbsp;cell:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fe_structure_4atom</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Full Formula (Fe4)
+Reduced Formula: Fe
+abc   :   4.053843   4.053843   2.866500
+angles:  90.000000  90.000000  90.000000
+Sites (4)
+  #  SP      a    b     c
+---  ----  ---  ---  ----
+  0  Fe    0    0     0
+  1  Fe    0.5  0.5  -0
+  2  Fe    0.5  0     0.5
+  3  Fe    1    0.5   0.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Magnetic-patterns">Magnetic patterns<a class="anchor-link" href="#Magnetic-patterns">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Defining a magnetic pattern is straightforward and is achieved by assigning a spin direction to each site in a unit cell.
+We adopt the conventional method for building a classical Ising or Heisenberg model by assuming that all spin amplitudes are equal in magnitude on all sites.
+This allows us to specify a magnetic pattern by assigning +1 or -1 to each site.
+This means unit cells with more sites allow you to define more unique magnetic patterns, which is useful if the magnetic energy landscape is complicated such that modeling these energies requires including more terms.
+For this tutorial, the <span class="caps">BCC</span> Fe 4-atom cell will&nbsp;suffice.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bcc_4atom_magnetic_patterns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;f-type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;a-type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;g-type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Build-the-model">Build the model<a class="anchor-link" href="#Build-the-model">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fe_neighbor_data</span> <span class="o">=</span> <span class="n">count_neighbors</span><span class="p">(</span><span class="n">cell_structure</span><span class="o">=</span><span class="n">fe_structure_4atom</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fe_model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">magnetic_patterns</span><span class="o">=</span><span class="n">bcc_4atom_magnetic_patterns</span><span class="p">,</span> <span class="n">neighbor_data</span><span class="o">=</span><span class="n">fe_neighbor_data</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ol>
+<li><a id="kohlhaas1967_ZAngewPhys"></a> R. Kohlhaas, P. Donner, and N. Schmitz-Pranghe, Z. Angew. Phys. 23, 245&nbsp;(1967)</li>
+</ol>
+
+</div>
+</div>
+</div>
  
 
 
