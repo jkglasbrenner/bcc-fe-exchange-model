@@ -1012,7 +1012,7 @@ div.input_area pre, div.output_area pre {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;We load the required classes and functions from the pymatgen library for easy manipulation of crystal&amp;nbsp;structures.&lt;/p&gt;
+&lt;p&gt;Import standard library&amp;nbsp;modules:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1022,7 +1022,8 @@ div.input_area pre, div.output_area pre {
 
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymatgen.transformations.standard_transformations&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SupercellTransformation&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pathlib&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stdout&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1032,7 +1033,62 @@ div.input_area pre, div.output_area pre {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;We also import convenient functions from the &lt;a href="https://github.com/jkglasbrenner/datamaterials-neighbormodels"&gt;neighbormodels&lt;/a&gt; module that were developed for counting neighbors in a periodic crystal&amp;nbsp;system.&lt;/p&gt;
+&lt;p&gt;Import external&amp;nbsp;modules:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.formula.api&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;smf&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sympy&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy.constants&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Boltzmann&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;electron_volt&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sympy&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sympy.vector&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CoordSys3D&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymatgen&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;units&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymatgen.transformations.standard_transformations&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SupercellTransformation&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;ruamel.yaml&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;YAML&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Set options, instantiate classes, and define global&amp;nbsp;constants:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;display.colheader_justify&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;left&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_option&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;display.html.border&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;html_table_style&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;selector&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;th&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;props&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;text-align&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;left&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]}&lt;/span&gt;
+&lt;span class="n"&gt;yaml&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;YAML&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;kB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Boltzmann&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;electron_volt&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;We also import functions from my own &lt;a href="https://github.com/jkglasbrenner/datamaterials-neighbormodels"&gt;neighbormodels&lt;/a&gt; module that I developed for counting neighbors in a periodic crystal&amp;nbsp;system.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1054,7 +1110,284 @@ div.input_area pre, div.output_area pre {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Crystal-structure"&gt;Crystal structure&lt;a class="anchor-link" href="#Crystal-structure"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;At room temperature, &lt;a href="#kohlhaas1967_ZAngewPhys"&gt;iron has the following crystal structure&lt;/a&gt;:&lt;/p&gt;
+&lt;h2 id="Theory-and-background"&gt;Theory and background&lt;a class="anchor-link" href="#Theory-and-background"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Magnetic-ordering-and-the-exchange-interaction-[1]"&gt;Magnetic ordering and the exchange interaction [&lt;a href="#glasbrenner2013_dissertation"&gt;1&lt;/a&gt;]&lt;a class="anchor-link" href="#Magnetic-ordering-and-the-exchange-interaction-[1]"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;A handful of elemental materials and a vast number of compounds exhibit phases with magnetic ordering, the spontaneous alignment of spins in the absence of an external magnetic field.
+There are three general cases of ordering: ferromagnetism, antiferromagnetism, and ferrimagnetism.
+In ferromagnetic ordering all spins align parallel to one another, resulting in a macroscopic magnetization.
+In antiferromagnetism the spins are aligned anti-parallel to one another and the net magnetization is zero.
+Unlike the ferromagnetic case, antiferromagnetic order can be achieved via different topologies of moment ordering.
+In some systems, such as materials with a triangular Kagome lattice crystal structure, different antiferromagnetic orderings can be degenerate or energetically similar, giving rise to magnetic frustration.
+In ferrimagnetism, the spins order in some non-ferromagnetic way, but the magnetization is finite.
+For example, this can occur in compounds with two different magnetic species with different net moments, so even if the magnetic ordering is reminiscent of an antiferromagnet, the different moment magnitudes lead to a net&amp;nbsp;magnetization.&lt;/p&gt;
+&lt;p&gt;The origin of magnetic ordering is the so-called exchange interaction, which refers to the effect of electrostatic interactions competing with the Pauli exclusion principle.
+There are several kinds of exchange, such as &lt;em&gt;direct exchange&lt;/em&gt;, &lt;em&gt;superexchange&lt;/em&gt;, &lt;em&gt;indirect exchange&lt;/em&gt;, &lt;em&gt;itinerant exchange&lt;/em&gt;, &lt;em&gt;double exchange&lt;/em&gt;, and others.
+Under the right conditions, the exchange interaction leads to an energetic preference for long-range magnetic ordering, with the aforementioned different kinds of exchange often preferring one type of magnetic order over another.
+Building a general exchange interaction model that is compatible with all of the different kinds of exchange mechanisms and ordering patterns remains an immense theoretical&amp;nbsp;challenge.&lt;/p&gt;
+&lt;p&gt;The classical Heisenberg model is one of the models used to describe magnetic systems, and it works best in systems where the spins are localized.
+There has also been success in applying this model to materials with moderate levels of itinerancy.
+For the rest of this tutorial, we will focus on the details of setting up and analyzing the Heisenberg model of magnetic exchange for real material&amp;nbsp;systems.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Mean-field-approximation-to-the-Heisenberg-model"&gt;Mean-field approximation to the Heisenberg model&lt;a class="anchor-link" href="#Mean-field-approximation-to-the-Heisenberg-model"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The classical Heisenberg model is written as&amp;nbsp;follows,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H} = \sum_{\langle{}i,j\rangle{}} J_{ij} \mathbf{m}_{i} \cdot \mathbf{m}_{j},&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;where $i$ and $j$ are site indices, $\mathbf{m}_{i}$ is a classical vector representing the magnetic moment of site $i$, and $J_{ij}$ is the exchange constant for the interaction between sites $i$ and $j$ that parameterizes the spin-flip energy.
+The range $\left\langle{}i,j\right\rangle{}$ indicates that the summation is over all possible site pairs in the&amp;nbsp;lattice.&lt;/p&gt;
+&lt;p&gt;There is no known analytic solution to the classical three-dimensional Heisenberg model.
+Exact numerical results are available using Monte Carlo simulations, which are straightforward to implement but can be computationally expensive.
+The &lt;em&gt;mean-field approximation&lt;/em&gt; (&lt;span class="caps"&gt;MFA&lt;/span&gt;) is a well-known and simple method for analyzing the Heisenberg model that has limitations, but is a reasonable starting point.
+It also provides a method for computing exchange parameters using first-principles calculations by doing the&amp;nbsp;following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use density functional theory to compute the total energy of various magnetic patterns of a magnetic&amp;nbsp;system.&lt;/li&gt;
+&lt;li&gt;Derive mean-field expressions for the Heisenberg model mapped to the crystal structure of the magnetic&amp;nbsp;system.&lt;/li&gt;
+&lt;li&gt;Choose an interaction cutoff distance beyond which you assume the exchange parmeters are small enough to ignore.&lt;ul&gt;
+&lt;li&gt;Model selection methods can be used to provide more rigor if the appropriate cutoff distance is not&amp;nbsp;obvious.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Use regression analysis to fit (train) the mean-field model on the total energy calculations to obtain the exchange&amp;nbsp;parameters.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;What follows is a step-by-step derivation of the mean-field model of &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe, which we will use to fit to energies computed via density functional theory calculations and obtain the Fe exchange parameters.
+We will also use the mean-field model to find quick estimates of the Curie temperature based on the fitted exchange&amp;nbsp;parameters.&lt;/p&gt;
+&lt;p&gt;We start by defining the spin fluctuation&amp;nbsp;parameter,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \delta{}\mathbf{m}_{i} \equiv \mathbf{m}_{i} - \left\langle{} \mathbf{m}_{i} \right\rangle{},&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;and using it to rewrite the&amp;nbsp;Hamiltonian:&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H} = \sum_{\langle{}i,j\rangle{}} J_{ij} \left( \left\langle{} \mathbf{m}_{i} \right\rangle{} + \delta{}\mathbf{m}_{i} \right) \cdot{} \left( \left\langle{} \mathbf{m}_{j} \right\rangle{} + \delta{}\mathbf{m}_{j} \right).&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;We have not made any approximations yet, just transformed the&amp;nbsp;variables.&lt;/p&gt;
+&lt;p&gt;Next, we expand the formula so that we can see all multiplied terms.
+Let&amp;#8217;s use the &lt;a href="https://www.sympy.org"&gt;sympy&lt;/a&gt; module to help us with the symbolic manipulations, first by declaring our&amp;nbsp;variables,&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;j_ij&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;J_ij&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;delta_m_i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;𝛿m_i&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;delta_m_j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;𝛿m_j&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m_i_avg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;m_i&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m_j_avg&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;lt;m_j&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m_i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;m_i&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;m_j&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;symbols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;m_j&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;which allows us to to write down the formula inside the&amp;nbsp;summation,&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;hamiltonian&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sympy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;expand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;j_ij&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m_i_avg&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta_m_i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m_j_avg&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;delta_m_j&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hamiltonian&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;&amp;lt;m_i&amp;gt;*&amp;lt;m_j&amp;gt;*J_ij + &amp;lt;m_i&amp;gt;*J_ij*𝛿m_j + &amp;lt;m_j&amp;gt;*J_ij*𝛿m_i + J_ij*𝛿m_i*𝛿m_j
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;strong&gt;We now apply the mean-field approximation&lt;/strong&gt; by dropping spin-fluctuation terms of order $O\left(\delta{}m^{2}\right)$ and&amp;nbsp;higher.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;hamiltonian_mfa&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sympy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;simplify&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hamiltonian&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta_m_i&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;delta_m_j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hamiltonian_mfa&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;J_ij*(&amp;lt;m_i&amp;gt;*&amp;lt;m_j&amp;gt; + &amp;lt;m_i&amp;gt;*𝛿m_j + &amp;lt;m_j&amp;gt;*𝛿m_i)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The mean-field Hamiltonian&amp;nbsp;is,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}_{\text{mf}} \approx \sum_{\langle{}i,j\rangle{}} J_{ij} \left( \left\langle{} \mathbf{m}_{i} \right\rangle{} \cdot{} \left\langle{} \mathbf{m}_{j} \right\rangle{} + \left\langle{} \mathbf{m}_{i} \right\rangle{} \cdot{} \delta{}\mathbf{m}_{j} + \left\langle{} \mathbf{m}_{j} \right\rangle{} \cdot{} \delta{}\mathbf{m}_{i} \right)&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;The first term is just a constant shift of the energy, which we can remove by redefining the baseline energy for the&amp;nbsp;Hamiltonian.&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}&amp;#8217; \equiv \text{H}_{\text{mf}} + \left(\sum_{\langle{}i,j\rangle{}} J_{ij} \left\langle{} \mathbf{m}_{i} \right\rangle{} \cdot{} \left\langle{} \mathbf{m}_{j} \right\rangle{} \right)&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;For the other two terms, we take the definition for $\delta{}\mathbf{m}_{i}$ and substitute it back into our&amp;nbsp;expression,&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sympy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;expand&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hamiltonian_mfa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;delta_m_i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m_i&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;m_i_avg&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;delta_m_j&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m_j&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;m_j_avg&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;j_ij&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;m_i_avg&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;m_j_avg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;&amp;lt;m_i&amp;gt;*J_ij*m_j + &amp;lt;m_j&amp;gt;*J_ij*m_i
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Our Hamiltonian now&amp;nbsp;reads,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}&amp;#8217; = \sum_{\langle{}i,j\rangle{}} J_{ij} \left( \left\langle{} \mathbf{m}_{i} \right\rangle{} \cdot{} \mathbf{m}_{j} + \left\langle{} \mathbf{m}_{j} \right\rangle{} \cdot{} \mathbf{m}_{i} \right)&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;Since the site indices $i$ and $j$ are &amp;#8220;dummy&amp;#8221; indices and the above dot products are commutative, we can add together the terms to further simplify the&amp;nbsp;expression,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}&amp;#8217; = 2 \sum_{\langle{}i,j\rangle{}} J_{ij} \left\langle{} \mathbf{m}_{j} \right\rangle{} \cdot{} \mathbf{m}_{i}&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;This form of the mean-field Hamiltonian is compact, but not the most convenient form for being able to write down models that map magnetic patterns to total energies computed using first-principles calculations.
+To get our expression into a more convenient form, we transform the summation over site pairs as&amp;nbsp;follows,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \sum_{\langle{}i,j\rangle{}} \to \frac{1}{2 N_{\alpha{}}} \sum_{i} \sum_{\text{n}} \sum_{\alpha{} \leq \beta{}}&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;The above transformation redefines how we label the site pairs, introducing the sublattices $\alpha{}$ and $\beta{}$ and the neighbor index $n$.
+The factor of $\frac{1}{2}$ accounts for double-counting of pairwise bonds and the factor $\frac{1}{N_{\alpha{}}}$ normalizes the summation with respect to the total number of sublattices $N_{\alpha{}}$.
+This transforms our mean-field Hamiltonian as&amp;nbsp;follows,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}&amp;#8217; = \frac{1}{N_{\alpha}} \sum_{i} \sum_{n} \sum_{\alpha{} \leq \beta{}} z_{n}^{\alpha{}\beta{}} J_{n}^{\alpha{}\beta{}} \left\langle{} \mathbf{m}^{\beta{}} \right\rangle{} \cdot{} \mathbf{m}_{i}^{\alpha{}}&amp;nbsp;\end{equation}&lt;/p&gt;
+&lt;p&gt;For convenience, we can rewrite the summation over $\alpha{} \leq \beta{}$ into $\alpha = \beta$ and $\alpha \neq \beta$&amp;nbsp;terms,&lt;/p&gt;
+&lt;p&gt;\begin{equation}
+  \text{H}&amp;#8217; = \sum_{i} \left( \frac{1}{N_{\alpha}} \sum_{\alpha{}} \sum_{n} z_{n}^{\alpha{}} J_{n}^{\alpha{}} \left\langle{} \mathbf{m}^{\alpha{}} \right\rangle{} \cdot{} \mathbf{m}_{i}^{\alpha{}} + \frac{1}{N_{\alpha{}}} \sum_{\alpha{},\beta{}\in{}\alpha{}\neq{}\beta{}} \sum_{n} z_{n}^{\alpha{}\beta{}} J_{n}^{\alpha{}\beta{}} \left\langle{} \mathbf{m}^{\beta{}} \right\rangle{} \cdot{} \mathbf{m}_{i}^{\alpha{}} \right)&amp;nbsp;\end{equation}&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Sublattices"&gt;Sublattices&lt;a class="anchor-link" href="#Sublattices"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The sublattice concept may be familiar if you&amp;#8217;ve worked with alloys, but even if you haven&amp;#8217;t, it&amp;#8217;s straightforward to understand.
+For a magnetic system, a complete set of sublattices&amp;nbsp;must&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Define a unit cell (lattice with a basis) compatible with the full periodic crystal&amp;nbsp;structure&lt;/li&gt;
+&lt;li&gt;Have all spins aligned in parallel within each&amp;nbsp;sublattice.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Finite-temperature-behavior-of-mean-field-Heisenberg-model"&gt;Finite temperature behavior of mean-field Heisenberg model&lt;a class="anchor-link" href="#Finite-temperature-behavior-of-mean-field-Heisenberg-model"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Calculating-exchange-parameters-of-BCC-Fe"&gt;Calculating exchange parameters of &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe&lt;a class="anchor-link" href="#Calculating-exchange-parameters-of-BCC-Fe"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Crystal-structure"&gt;Crystal structure&lt;a class="anchor-link" href="#Crystal-structure"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;At room temperature, &lt;a href="#kohlhaas1967_ZAngewPhys"&gt;iron has the following crystal structure&lt;/a&gt;:&lt;/p&gt;
 &lt;table&gt;
   &lt;tr&gt;&lt;td&gt;Structure&lt;/td&gt;&lt;td&gt;Body-centered cubic&lt;/td&gt;&lt;/tr&gt;
   &lt;tr&gt;&lt;td&gt;Spacegroup&lt;/td&gt;&lt;td&gt;Im-3m (229)&lt;/td&gt;&lt;/tr&gt;
@@ -1203,7 +1536,7 @@ Sites (4)
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Magnetic-patterns"&gt;Magnetic patterns&lt;a class="anchor-link" href="#Magnetic-patterns"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="Mapping-magnetic-patterns-onto-sublattices"&gt;Mapping magnetic patterns onto sublattices&lt;a class="anchor-link" href="#Mapping-magnetic-patterns-onto-sublattices"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1223,11 +1556,7 @@ For this tutorial, the &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe 4-atom cell 
 
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;bcc_4atom_magnetic_patterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;f-type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;a-type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;g-type&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_magnetic_patterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;yaml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;load&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data/fe_magnetic_patterns.yml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1235,9 +1564,74 @@ For this tutorial, the &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe 4-atom cell 
 &lt;/div&gt;
 
 &lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fe_magnetic_patterns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;4atoms&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_table_styles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;html_table_style&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hide_index&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;style  type="text/css" &gt;
+    #T_f7d255ec_9eb5_11e8_b855_7d037a3c4fba  {
+    }    #T_f7d255ec_9eb5_11e8_b855_7d037a3c4fba  {
+    }&lt;/style&gt;  
+&lt;table id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fba" &gt; 
+&lt;thead&gt;    &lt;tr&gt; 
+        &lt;th class="col_heading level0 col0" &gt;nm&lt;/th&gt; 
+        &lt;th class="col_heading level0 col1" &gt;f-type&lt;/th&gt; 
+        &lt;th class="col_heading level0 col2" &gt;a-type&lt;/th&gt; 
+        &lt;th class="col_heading level0 col3" &gt;g-type&lt;/th&gt; 
+    &lt;/tr&gt;&lt;/thead&gt; 
+&lt;tbody&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow0_col0" class="data row0 col0" &gt;0&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow0_col1" class="data row0 col1" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow0_col2" class="data row0 col2" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow0_col3" class="data row0 col3" &gt;1&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow1_col0" class="data row1 col0" &gt;0&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow1_col1" class="data row1 col1" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow1_col2" class="data row1 col2" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow1_col3" class="data row1 col3" &gt;-1&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow2_col0" class="data row2 col0" &gt;0&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow2_col1" class="data row2 col1" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow2_col2" class="data row2 col2" &gt;-1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow2_col3" class="data row2 col3" &gt;1&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow3_col0" class="data row3 col0" &gt;0&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow3_col1" class="data row3 col1" &gt;1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow3_col2" class="data row3 col2" &gt;-1&lt;/td&gt; 
+        &lt;td id="T_f7d255ec_9eb5_11e8_b855_7d037a3c4fbarow3_col3" class="data row3 col3" &gt;-1&lt;/td&gt; 
+    &lt;/tr&gt;&lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Build-the-model"&gt;Build the model&lt;a class="anchor-link" href="#Build-the-model"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id="Counting-neighbors-and-summing-over-sublattices"&gt;Counting neighbors and summing over sublattices&lt;a class="anchor-link" href="#Counting-neighbors-and-summing-over-sublattices"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1259,7 +1653,7 @@ For this tutorial, the &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe 4-atom cell 
 
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;build_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;magnetic_patterns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;bcc_4atom_magnetic_patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;neighbor_data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_neighbor_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_exchange_model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;build_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;magnetic_patterns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_magnetic_patterns&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;4atoms&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;neighbor_data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_neighbor_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1269,7 +1663,240 @@ For this tutorial, the &lt;span class="caps"&gt;BCC&lt;/span&gt; Fe 4-atom cell 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Building-the-model-matrix"&gt;Building the model matrix&lt;a class="anchor-link" href="#Building-the-model-matrix"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_dft_energies&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read_csv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filepath_or_buffer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;data/fe_magnetic_energies.csv&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_model_matrix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fe_dft_energies&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;energy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;total_energy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;
+         &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;float64&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pattern == &amp;#39;nm&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;total_energy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+        &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;units&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Ha_to_eV&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;num_sites&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;merge&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fe_exchange_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pattern&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pattern != &amp;#39;nm&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;J1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;J1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;J2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;J2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;loc&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;pattern&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;energy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;J1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;J2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fe_model_matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_table_styles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;html_table_style&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hide_index&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;style  type="text/css" &gt;
+    #T_f7e49798_9eb5_11e8_b855_7d037a3c4fba  {
+    }    #T_f7e49798_9eb5_11e8_b855_7d037a3c4fba  {
+    }&lt;/style&gt;  
+&lt;table id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fba" &gt; 
+&lt;thead&gt;    &lt;tr&gt; 
+        &lt;th class="col_heading level0 col0" &gt;pattern&lt;/th&gt; 
+        &lt;th class="col_heading level0 col1" &gt;energy&lt;/th&gt; 
+        &lt;th class="col_heading level0 col2" &gt;J1&lt;/th&gt; 
+        &lt;th class="col_heading level0 col3" &gt;J2&lt;/th&gt; 
+    &lt;/tr&gt;&lt;/thead&gt; 
+&lt;tbody&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow0_col0" class="data row0 col0" &gt;f-type&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow0_col1" class="data row0 col1" &gt;-599.892&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow0_col2" class="data row0 col2" &gt;8&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow0_col3" class="data row0 col3" &gt;6&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow1_col0" class="data row1 col0" &gt;a-type&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow1_col1" class="data row1 col1" &gt;-133.324&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow1_col2" class="data row1 col2" &gt;-8&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow1_col3" class="data row1 col3" &gt;6&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow2_col0" class="data row2 col0" &gt;g-type&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow2_col1" class="data row2 col1" &gt;-375.406&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow2_col2" class="data row2 col2" &gt;0&lt;/td&gt; 
+        &lt;td id="T_f7e49798_9eb5_11e8_b855_7d037a3c4fbarow2_col3" class="data row2 col3" &gt;-2&lt;/td&gt; 
+    &lt;/tr&gt;&lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Fitting-the-exchange-parameters-using-the-statsmodels-module"&gt;Fitting the exchange parameters using the statsmodels module&lt;a class="anchor-link" href="#Fitting-the-exchange-parameters-using-the-statsmodels-module"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;smf_exchange_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;smf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_model_matrix&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;formula&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;energy ~ J1 + J2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;smf_exchange_parameters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;smf_exchange_fit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;statsmodels&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Fitting-the-exchange-parameters-using-the-scikit-learn-module"&gt;Fitting the exchange parameters using the scikit-learn module&lt;a class="anchor-link" href="#Fitting-the-exchange-parameters-using-the-scikit-learn-module"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;lm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;LinearRegression&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;lm_exchange_fit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_model_matrix&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;J1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;J2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]],&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fe_model_matrix&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;energy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;lm_exchange_parameters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;sklearn&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;lm_exchange_fit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;intercept_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lm_exchange_fit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;lm_exchange_fit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;coef_&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]]},&lt;/span&gt;
+    &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Intercept&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;J1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;J2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Parameter-summary-for-both-methods"&gt;Parameter summary for both methods&lt;a class="anchor-link" href="#Parameter-summary-for-both-methods"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;smf_exchange_parameters&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lm_exchange_parameters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reset_index&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rename&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;index&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;parameter&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_table_styles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;html_table_style&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; \
+    &lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hide_index&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+
+
+
+&lt;div class="output_html rendered_html output_subarea output_execute_result"&gt;
+&lt;style  type="text/css" &gt;
+    #T_f7edd178_9eb5_11e8_b855_7d037a3c4fba  {
+    }    #T_f7edd178_9eb5_11e8_b855_7d037a3c4fba  {
+    }&lt;/style&gt;  
+&lt;table id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fba" &gt; 
+&lt;thead&gt;    &lt;tr&gt; 
+        &lt;th class="col_heading level0 col0" &gt;parameter&lt;/th&gt; 
+        &lt;th class="col_heading level0 col1" &gt;statsmodels&lt;/th&gt; 
+        &lt;th class="col_heading level0 col2" &gt;sklearn&lt;/th&gt; 
+    &lt;/tr&gt;&lt;/thead&gt; 
+&lt;tbody&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow0_col0" class="data row0 col0" &gt;Intercept&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow0_col1" class="data row0 col1" &gt;-373.206&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow0_col2" class="data row0 col2" &gt;-373.206&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow1_col0" class="data row1 col0" &gt;J1&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow1_col1" class="data row1 col1" &gt;-29.1605&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow1_col2" class="data row1 col2" &gt;-29.1605&lt;/td&gt; 
+    &lt;/tr&gt;    &lt;tr&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow2_col0" class="data row2 col0" &gt;J2&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow2_col1" class="data row2 col1" &gt;1.09971&lt;/td&gt; 
+        &lt;td id="T_f7edd178_9eb5_11e8_b855_7d037a3c4fbarow2_col2" class="data row2 col2" &gt;1.09971&lt;/td&gt; 
+    &lt;/tr&gt;&lt;/tbody&gt; 
+&lt;/table&gt; 
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="References"&gt;References&lt;a class="anchor-link" href="#References"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Adapted from &lt;a id="glasbrenner2013_dissertation"&gt;&lt;/a&gt; &lt;a href="http://digitalcommons.unl.edu/physicsdiss/23/"&gt;&lt;span class="caps"&gt;J. K.&lt;/span&gt; Glasbrenner, &lt;em&gt;Ab-initio and model studies of spin fluctuation effects in transport and thermodynamics of magnetic metals&lt;/em&gt;, Ph.D. dissertation, University of Nebraska (2013)&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a id="kohlhaas1967_ZAngewPhys"&gt;&lt;/a&gt; R. Kohlhaas, P. Donner, and N. Schmitz-Pranghe, Z. Angew. Phys. 23, 245&amp;nbsp;(1967)&lt;/li&gt;
 &lt;/ol&gt;
 
